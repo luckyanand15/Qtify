@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Hero/>
+      <Navbar />
+      <Hero />
     </div>
   );
 }
