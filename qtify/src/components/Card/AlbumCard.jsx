@@ -11,21 +11,22 @@ import {
 import CardImage from "../../assets/sample-card-image.jpg";
 
 function AlbumCard({ album }) {
+  const {image, follows, title, songs} = album;
   return (
     <div>
-      <Tooltip title={`${album.songs?.length} songs`} placement="top" arrow>
+      <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
         <div className={Styles.card}>
           <Card>
             <CardMedia
               component="img"
               height="170"
               alt="album"
-              image={album.image}
+              image={image}
             />
             <CardContent>
               <div className={Styles.banner}>
                 <Chip
-                  label={`${album.follows} Follows`}
+                  label={`${follows} Follows`}
                   size="small"
                   className={Styles.chip}
                 />
@@ -34,7 +35,7 @@ function AlbumCard({ album }) {
           </Card>
         </div>
         <div className={Styles.bannerTitle}>
-          <p>{album.title}</p>
+          <p>{title}</p>
         </div>
       </Tooltip>
     </div>
