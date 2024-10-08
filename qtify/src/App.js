@@ -6,6 +6,7 @@ import axios from "axios";
 
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
+  const [newAlbums, setNewAlbums] = useState([]);
 
   const getTopAlbums = async () => {
     try {
@@ -16,8 +17,18 @@ function App() {
     }
   };
 
+  const getNewAlbums = async () => {
+    try {
+      let newAlbumsResp = await axios.get("https://qtify-backend-labs.crio.do/albums/new");
+      setNewAlbums(newAlbumsResp.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     getTopAlbums();
+    getNewAlbums();
   }, []);
 
   return (
@@ -25,6 +36,7 @@ function App() {
       <Navbar />
       <Hero />
       <Section type="album" title="Top Albums" data={topAlbums}/>
+      <Section type="album" title="New Albums" data={newAlbums}/>
     </div>
   );
 }
