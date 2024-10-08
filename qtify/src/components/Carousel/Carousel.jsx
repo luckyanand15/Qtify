@@ -10,6 +10,18 @@ import RightButton from "./RightButton/RightButton";
 import { ReactComponent as LeftArrow } from "../../assets/LeftArrow.svg";
 
 function Carousel({ data }) {
+  const swiper = useSwiper();
+  const [swiperInstance,setSwiperInstance] = useState(null);
+  const [navigationButton, setNavigationButton] = useState({
+    prev:"disabled",
+    next:""
+  });
+  useEffect(()=>{
+    if(swiperInstance){
+      swiperInstance.slideTo(0);
+    }
+  },[data])
+
   return (
     <div className={Styles.wrapper}>
       <Swiper
@@ -23,8 +35,8 @@ function Carousel({ data }) {
         <RightButton />
         {data.map((album) => {
           return (
-            <SwiperSlide>
-              <AlbumCard album={album} key={album.id} />
+            <SwiperSlide key={album.id}>
+              <AlbumCard album={album}/>
             </SwiperSlide>
           );
         })}
