@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid2";
+import React, { useState } from "react";
 import Styles from "./Section.module.css";
 import AlbumCard from "../Card/AlbumCard";
-import { Box } from "@mui/material";
-import axios from "axios";
 import Carousel from "../Carousel/Carousel";
 
 function Section({ type, title, data }) {
@@ -22,12 +19,12 @@ function Section({ type, title, data }) {
         {toggler ? (
           <div className={Styles.flexWrappers}>
             {data.map((album) => {
-              return <AlbumCard album={album} key={album.id} />;
+              return <AlbumCard album={album} key={album.id} type={type}/>;
             })}
           </div>
         ) : (
           <div>
-            <Carousel data={data}/>
+            <Carousel data={data} type={type}/>
           </div>
         )}
       </div>

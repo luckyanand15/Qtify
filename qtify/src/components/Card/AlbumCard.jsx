@@ -1,32 +1,24 @@
 import React from "react";
 import Styles from "./AlbumCard.module.css";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Chip,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import CardImage from "../../assets/sample-card-image.jpg";
+import { Card, CardContent, CardMedia, Chip, Tooltip } from "@mui/material";
 
-function AlbumCard({ album }) {
-  const {image, follows, title, songs} = album;
+function AlbumCard({ album, type }) {
   return (
     <div>
-      <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
+      {type==="album" ? (
+        <Tooltip title={`${album.songs?.length} songs`} placement="top" arrow>
         <div className={Styles.card}>
           <Card>
             <CardMedia
               component="img"
               height="170"
               alt="album"
-              image={image}
+              image={album.image}
             />
             <CardContent>
               <div className={Styles.banner}>
                 <Chip
-                  label={`${follows} Follows`}
+                  label={`${album.follows} Follows`}
                   size="small"
                   className={Styles.chip}
                 />
@@ -35,9 +27,35 @@ function AlbumCard({ album }) {
           </Card>
         </div>
         <div className={Styles.bannerTitle}>
-          <p>{title}</p>
+          <p>{album.title}</p>
         </div>
       </Tooltip>
+      ):(
+        <>
+        <div className={Styles.card}>
+          <Card>
+            <CardMedia
+              component="img"
+              height="170"
+              alt="album"
+              image={album.image}
+            />
+            <CardContent>
+              <div className={Styles.banner}>
+                <Chip
+                  label={`${album.likes} Likes`}
+                  size="small"
+                  className={Styles.chip}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className={`${Styles.bannerTitle}`}>
+          <p>{album.title}</p>
+        </div>
+        </>
+      )}
     </div>
   );
 }

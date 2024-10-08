@@ -12,22 +12,23 @@
   object-fit: fill;
 }
 
-.banner{
-    position: relative;
+.banner {
+  position: relative;
 }
 
 .banner .chip {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    position: absolute;
-    left: -6px;
-    top: -10px; 
+  background-color: var(--color-black);
+  color: var(--color-white);
+  position: absolute;
+  left: -6px;
+  top: -10px;
 }
 
-.bannerTitle{
-    color: var(--color-white);
-    margin-top: 6px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
+.bannerTitle {
+  color: var(--color-white);
+  width: 159px;
+  margin-top: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
 }
